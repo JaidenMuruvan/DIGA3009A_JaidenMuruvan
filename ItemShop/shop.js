@@ -64,7 +64,7 @@ function displayItems(items) {
             item.images?.icon ||
             "https://fortnite-api.com/images/placeholder.png"; // fallback if no image
 
-        //Use the safe imageSrc in your HTML
+        //Use the safe imageSrc in HTML
         div.innerHTML = `
             <img src="${imageSrc}" alt="${item.devName}">
             <h3>${item.devName}</h3>
