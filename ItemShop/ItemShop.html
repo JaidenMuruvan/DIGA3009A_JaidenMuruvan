@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Item Shop</title>
+    <title>Fortnite Item Shop</title>
     <link rel="stylesheet" href="../main.css" />
   </head>
   <header>
@@ -26,8 +26,16 @@
     </nav>
   </header>
   <body>
-    <h1>View the latest Item Shop</h1>
+    <main class="shop-container">
+      <h1>View the latest Item Shop</h1>
+      <p id="date"></p>
+      <p id="timer"></p>
 
+      <input type="text" id="searchInput" placeholder="Search for an item..." />
+
+      <div id="shop-items" class="shop-grid"></div>
+    </main>
+    <script src="shop.js"></script>
     <footer class="footer-content">
       <p>Fortnite Companion | All Rights Reserved</p>
       <p>
