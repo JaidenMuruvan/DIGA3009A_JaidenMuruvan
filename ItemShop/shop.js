@@ -58,17 +58,26 @@ function displayItems(items) {
         const div = document.createElement("div");
         div.classList.add("shop-item");
 
-        //SAFELY get the image source
-        const imageSrc =
-            item.newDisplayAsset?.materialInstances?.[0]?.images?.Icon ||
-            item.images?.icon ||
-            "https://fortnite-api.com/images/placeholder.png"; // fallback if no image
+        const imageSrc = item.images?.icon || "../Images/PlaceHolderImage.png";
 
-        //Use the safe imageSrc in HTML
+        // Clean name and detect bundles
+        let cleanName = item.devName || item.name || "";
+        cleanName = cleanName.replace(/\[VIRTUAL\] ?\d+ x /g, ""); // remove [VIRTUAL] 1 x
+        cleanName = cleanName.replace(/ for -?\d+ MtxCurrency$/, ""); // remove price at end
+
+        // If it has multiple items, mark as bundle
+        if (cleanName.includes(",")) {
+            const firstItem = cleanName.split(",")[0].trim();
+            cleanName = `${firstItem} Bundle`;
+        }
+
         div.innerHTML = `
-            <img src="${imageSrc}" alt="${item.devName}">
-            <h3>${item.devName}</h3>
-            <p>Price: ${item.finalPrice} <img src="https://fortnite-api.com/images/vbuck.png" class="vbuck-icon"></p>
+            <img src="${imageSrc}" alt="${cleanName}">
+            <h3>${cleanName}</h3>
+            <p class="price-container">
+                <img src="../Images/vbuck.png" class="vbuck-icon">
+                <span>${item.finalPrice}</span>
+            </p>
         `;
 
         shopContainer.appendChild(div);

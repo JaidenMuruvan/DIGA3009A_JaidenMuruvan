@@ -113,9 +113,63 @@ nav ul li:hover{
     margin-top: 20px;
 }
 
-.vbuck-icon {
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-    margin-left: 4px;
+.price-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px; /* spacing between icon and number */
+}
+
+.shop-item .price-container .vbuck-icon {
+    width: 40%;
+    height: 40%;
+    object-fit: contain; /* ensures the image scales correctly */
+    margin-top: 6px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0f1923;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+#searchInput {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.cosmetic-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 20px;
+}
+
+.cosmetic-item {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cosmetic-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+}
+
+.cosmetic-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 5px;
 }
