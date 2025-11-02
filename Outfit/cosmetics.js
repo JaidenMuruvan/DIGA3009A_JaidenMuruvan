@@ -48,19 +48,21 @@ function displayCosmetics(cosmeticsToShow, append = false) {
   if (!append) container.innerHTML = "";
 
   cosmeticsToShow.forEach(cosmetic => {
+    const cosmeticName = cosmetic.name || cosmetic.devName || "";
+    const imageSrc = cosmetic.images?.icon;
+
+    //Skip items with no name or image
+    if (!cosmeticName || cosmeticName.toLowerCase() === "null" || cosmeticName.trim() === "" || !imageSrc) return;
+
     const div = document.createElement("div");
     div.classList.add("cosmetic-item");
 
-    const imageSrc = cosmetic.images?.icon || "../Images/PlaceHolderImage.png";
-
     div.innerHTML = `
-      <img src="${imageSrc}" alt="${cosmetic.name}">
-      <h3>${cosmetic.name}</h3>
-      <p>${cosmetic.type.displayValue}</p>
+      <img src="${imageSrc}" alt="${cosmeticName}">
+      <h3>${cosmeticName}</h3>
+      <p>${cosmetic.type?.displayValue || "Unknown Type"}</p>
       <button class="add-to-locker">Add to Locker</button>
     `;
-
-    
 
     div.querySelector(".add-to-locker").addEventListener("click", () => {
       addToLocker(cosmetic);
@@ -69,6 +71,7 @@ function displayCosmetics(cosmeticsToShow, append = false) {
     container.appendChild(div);
   });
 }
+
 
 function setupInfiniteScroll() {
   window.addEventListener("scroll", () => {
