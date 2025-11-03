@@ -13,10 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
         </button>
 
         <ul class="navigation-menu" id="nav-menu">
-          <li><a href="${basePath}index.html">Home</a></li>
-          <li><a href="${basePath}Stats/stats.html">Stats</a></li>
-          <li><a href="${basePath}ItemShop/itemShop.html">Item Shop</a></li>
-          <li><a href="${basePath}GameModes/gameModes.html">Game Modes</a></li>
+          <li><a href="${basePath}../index.html">Home</a></li>
+          <li><a href="${basePath}../Stats/stats.html">Stats</a></li>
+          <li><a href="${basePath}../ItemShop/itemShop.html">Item Shop</a></li>
+          <li><a href="${basePath}../GameModes/gameModes.html">Game Modes</a></li>
           <li class="dropdown">
             <a href="#">Cosmetics ▼</a>
             <ul class="dropdown-menu">
