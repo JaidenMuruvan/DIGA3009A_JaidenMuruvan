@@ -3,7 +3,7 @@ const searchInput = document.getElementById("searchInput");
 
 let cosmetics = [];
 let displayedCount = 0;
-const batchSize = 100; //number of cosmetics per scroll load
+const batchSize = 60; //number of cosmetics per scroll load
 
 async function loadCosmetics() {
   try {
