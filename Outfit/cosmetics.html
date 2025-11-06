@@ -12,11 +12,31 @@
     <main class="cosmetics-section">
       <h1>All Fortnite Cosmetics</h1>
 
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search for a cosmetic..."
-      />
+      <div class="filter-bar">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search for a cosmetic..."
+        />
+
+        <select id="typeFilter">
+          <option value="all">All Types</option>
+          <option value="Outfit">Outfits</option>
+          <option value="Pickaxe">Pickaxes</option>
+          <option value="Glider">Gliders</option>
+          <option value="Back Bling">Back Blings</option>
+          <option value="Emote">Emotes</option>
+          <option value="Wrap">Wraps</option>
+          <option value="Shoes">Shoes</option>
+        </select>
+
+        <select id="sortFilter">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="az">A-Z</option>
+          <option value="za">Z-A</option>
+        </select>
+      </div>
 
       <div id="cosmetic-container" class="cosmetic-container"></div>
     </main>

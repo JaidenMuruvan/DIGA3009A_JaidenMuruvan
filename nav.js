@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <a href="#">Cosmetics ▼</a>
             <ul class="dropdown-menu">
               <li><a href="../Outfit/cosmetics.html">All Cosmetics</a></li>
-              <li><a href="../Outfit/locker.html">Your fortnite Locker</a></li>
+              <li><a href="../Outfit/locker.html">Your Locker</a></li>
               <li><a href="../Outfit/outfit.html">Outfit Randomizer</a></li>
             </ul>
           </li>
