@@ -149,9 +149,9 @@ body{
     font-weight: bold;
 }
 
-.shop-container {
+.heading-container {
   text-align: center;
-  padding: 20px;
+  padding: 40px;
 }
 
 #searchInput {

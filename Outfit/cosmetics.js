@@ -2,6 +2,7 @@ const container = document.getElementById("cosmetic-container");
 const searchInput = document.getElementById("searchInput");
 const typeFilter = document.getElementById("typeFilter");
 const sortFilter = document.getElementById("sortFilter");
+const seasonFilter = document.getElementById("seasonFilter");
 
 let cosmetics = [];
 let filteredCosmetics = [];
@@ -16,8 +17,18 @@ async function loadCosmetics() {
     console.log("Fortnite API response:", json); 
 
     if (Array.isArray(json.data)) {
-      cosmetics = json.data.filter(c => c.name && c.type && c.images?.icon);
+      cosmetics = json.data.filter(c => {
+        const hasValidName = c.name && c.name !== "TBD";
+        const hasIcon = c.images?.icon;
+        const hasType = c.type && c.type.displayValue;
+        const hasIntro = c.introduction && c.introduction.text && !c.introduction.text.includes("Unknown");
+
+        return hasValidName && hasIcon && hasType && hasIntro;
+});
+
       filteredCosmetics = [...cosmetics]; //starts as unfiltered
+
+      populateSeasonFilter();
     } else {
       console.error("Unexpected structure:", json);
       container.innerHTML = "<p>Could not find cosmetics data.</p>";
@@ -31,6 +42,7 @@ async function loadCosmetics() {
    searchInput.addEventListener("input", applyFilters);
    typeFilter.addEventListener("change", applyFilters);
    sortFilter.addEventListener("change", applyFilters);
+   seasonFilter.addEventListener("change", applyFilters);
 
   } catch (err) {
     console.error("Error loading cosmetics:", err);
@@ -38,16 +50,51 @@ async function loadCosmetics() {
   }
 }
 
+function populateSeasonFilter() {
+    const seasonSet = new Set();
+
+    cosmetics.forEach(item => {
+        if (item.introduction && item.introduction.chapter && item.introduction.season) {
+            const chapter = item.introduction.chapter;
+            const season = item.introduction.season;
+            seasonSet.add(`Chapter ${chapter} Season ${season}`);
+        }
+    });
+
+    const sorrtedSeasons = Array.from(seasonSet).sort((a, b) => {
+        const [ca, sa] = a.match(/\d+/g).map(Number);
+        const [cb, sb] = b.match(/\d+/g).map(Number);
+        if (ca !== cb) return ca - cb;
+        return sa - sb;
+    });
+
+    sorrtedSeasons.forEach(season => {
+        const option = document.createElement("option");
+        option.value = season;
+        option.textContent = season;
+        seasonFilter.appendChild(option);
+    });
+}
+
 function applyFilters() {
     const search = searchInput.value.toLowerCase();
     const selectedType = typeFilter.value;
     const selectedSort = sortFilter.value;
+    const selectedSeason = seasonFilter.value;
 
     filteredCosmetics = cosmetics.filter(item => {
         const matchesSearch = item.name.toLowerCase().includes(search);
         const matchesType =
             selectedType === "all" || item.type.displayValue === selectedType;
-        return matchesSearch && matchesType;
+
+        let matchesSeason = true;
+        if (selectedSeason !== "all" && item.introduction) {
+            const seasonString = `Chapter ${item.introduction.chapter} Season ${item.introduction.season}`;
+            matchesSeason = seasonString === selectedSeason;
+        }
+
+        return matchesSearch && matchesType && matchesSeason;
+        
     });
 
     //sorting part
@@ -65,7 +112,7 @@ function applyFilters() {
             filteredCosmetics.sort((a, b) => new Date(a.added || 0) - new Date(b.added || 0));
             break;
     }
-    
+
     displayedCount = 0;
     container.innerHTML = "";
     displayNextBatch();
@@ -81,19 +128,19 @@ function displayCosmetics(cosmeticsToShow, append = false) {
   if (!append) container.innerHTML = "";
 
   cosmeticsToShow.forEach(cosmetic => {
-    const cosmeticName = cosmetic.name || cosmetic.devName || "";
-    const imageSrc = cosmetic.images?.icon;
-
-    //Skip items with no name or image
-    if (!cosmeticName || cosmeticName.toLowerCase() === "null" || cosmeticName.trim() === "" || !imageSrc) return;
-
     const div = document.createElement("div");
     div.classList.add("cosmetic-item");
 
+    const imageSrc = cosmetic.images?.icon || "../Images/PlaceHolderImage.png";
+    const intro = cosmetic.introduction
+      ? `Chapter ${cosmetic.introduction.chapter} Season ${cosmetic.introduction.season}`
+      : "Unknown";
+
     div.innerHTML = `
-      <img src="${imageSrc}" alt="${cosmeticName}">
-      <h3>${cosmeticName}</h3>
-      <p>${cosmetic.type?.displayValue || "Unknown Type"}</p>
+      <img src="${imageSrc}" alt="${cosmetic.name}">
+      <h3>${cosmetic.name}</h3>
+      <p>${cosmetic.type.displayValue}</p>
+      <p class="season-info">${intro}</p>
       <button class="add-to-locker">Add to Locker</button>
     `;
 
