@@ -6,6 +6,41 @@ const statsContainer = document.getElementById("stats-container");
 let selectedPlatform = "epic"; //default platform
 let lastSearchedUser = ""; //stores the last searched username
 
+//GSAP Page Intro Animations
+window.addEventListener("load", () => {
+  gsap.from(".heading-container h1", {
+    opacity: 0,
+    y: -30,
+    duration: 0.8,
+    ease: "power2.out"
+  });
+
+  gsap.from(".platform-buttons button", {
+    opacity: 0,
+    y: 20,
+    stagger: 0.15,
+    duration: 0.6,
+    delay: 0.3,
+    ease: "power2.out"
+  });
+
+  gsap.from([".mode-filter", ".search-container"], {
+    opacity: 0,
+    y: 30,
+    duration: 0.8,
+    delay: 0.8,
+    stagger: 0.2,
+    ease: "power2.out"
+  });
+
+  gsap.from(".footer-content", {
+    opacity: 0,
+    y: 20,
+    duration: 1,
+    delay: 1.5,
+    ease: "power2.out"
+  });
+});
 
 platformButtons.forEach(btn => {
   btn.addEventListener("click", () => {
@@ -67,9 +102,22 @@ async function fetchStats(forcedUsername = null) {
 
 //Display stats
 function displayStats({ level, kills, wins, matches, kd, winRate, hoursPlayed, mode }) {
-  statsContainer.innerHTML = `
-    <h2>${mode.charAt(0).toUpperCase() + mode.slice(1)} Stats</h2>
 
+    // Reset animation
+    statsContainer.style.animation = "none";
+    void statsContainer.offsetWidth; //forces reflow
+    statsContainer.style.animation = "fadeIn 0.6s ease-in-out";
+
+    const randomSkin = `skins/${Math.floor(Math.random() * 10) + 1}.png`;
+
+  statsContainer.innerHTML = `
+    <div class="skin-display">
+        <img src="${randomSkin}" alt="Player Skin">
+    </div>
+
+    <div class="stats-details"
+    <h2>${mode.charAt(0).toUpperCase() + mode.slice(1)} Stats</h2>
+    
     <div class="stat-item">
     <img src="../Images/level.png" class="stat-icon" alt="Level Icon">
     <p><strong>Battle Pass Level:</strong> ${level}</p>
@@ -81,12 +129,12 @@ function displayStats({ level, kills, wins, matches, kd, winRate, hoursPlayed, m
     </div>
 
     <div class="stat-item">
-    <img src="../Images/wins.png" class="stat-icon" alt="Wins Icon">
+    <img src="../Images/wins.png" class="stat-icon wins-icon" alt="Wins Icon">
     <p><strong>Wins:</strong> ${wins}</p>
     </div>
 
     <div class="stat-item">
-    <img src="../Images/matches.png" class="stat-icon" alt="Match Icon">
+    <img src="../Images/matches.png" class="stat-icon matches-icon" alt="Match Icon">
     <p><strong>Matches:</strong> ${matches}</p>
     </div>
 
@@ -104,6 +152,7 @@ function displayStats({ level, kills, wins, matches, kd, winRate, hoursPlayed, m
     <img src="../Images/hours.png" class="stat-icon" alt="Hours played Icon">
     <p><strong>Hours Played: </strong>${hoursPlayed}h</p>
     </div>
+   </div>
   `;
 }
 
