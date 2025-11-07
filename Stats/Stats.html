@@ -3,14 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>View Stats</title>
+    <title>Fortnite Stats</title>
     <link rel="stylesheet" href="../main.css" />
+    <link rel="stylesheet" href="stats.css" />
   </head>
   <header></header>
   <body>
-    <main class="heading-container">
-      <h1>View your Fortnite Stats</h1>
+    <main class="stats-section">
+      <div class="heading-container">
+        <h1>Fortnite Stats Tracker</h1>
+      </div>
+      <p id="current-season" class="season-info">Fetching current season...</p>
+
+      <div class="platform-buttons">
+        <button
+          class="platform-btn active"
+          data-platform="epic"
+          title="Epic Games"
+        >
+          <img src="../Images/epic.png" alt="Epic Game Logo" />
+        </button>
+        <button class="platform-btn" data-platform="psn" title="Playstation">
+          <img src="../Images/playstation.png" alt="Playstation Logo" data />
+        </button>
+        <button class="platform-btn" data-platform="xbl" title="Xbox">
+          <img src="../Images/xboxx.png" alt="Xbox Logo" />
+        </button>
+      </div>
+      <div class="mode-filter">
+        <label for="modeFilter">Game Mode:</label>
+        <select id="modeFilter">
+          <option value="overall">Overall</option>
+          <option value="solo">Solo</option>
+          <option value="duo">Duos</option>
+          <option value="trio">Trios</option>
+          <option value="squad">Squads</option>
+          <option value="ltm">LTMs</option>
+        </select>
+      </div>
+      <div class="search-container">
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter Fortnite username"
+        />
+
+        <button id="searchBtn">Search Stats</button>
+      </div>
+
+      <div id="stats-container" class="stats-container">
+        <p>Search for a player to view stats.</p>
+      </div>
     </main>
+    <script src="stats.js"></script>
     <footer class="footer-content">
       <p>Fortnite Companion | All Rights Reserved</p>
       <p>
