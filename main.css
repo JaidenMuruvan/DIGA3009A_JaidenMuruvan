@@ -62,10 +62,16 @@ body{
   background: #222;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: auto;
   border-radius: 8px;
-  min-width: 180px;
+  min-width: 150px;
   z-index: 1100;
+  transform: translate(-30px);
+}
+
+nav .dropdown-menu{
+    left: 0;
+    right: auto;
 }
 
 .dropdown-menu li a {

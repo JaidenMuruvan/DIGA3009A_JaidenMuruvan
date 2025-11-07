@@ -150,6 +150,8 @@ function displayCosmetics(cosmeticsToShow, append = false) {
 
     container.appendChild(div);
   });
+
+  updateResultsCount(filteredCosmetics.length);
 }
 
 
@@ -178,6 +180,14 @@ function addToLocker(cosmetic) {
 
   localStorage.setItem("locker", JSON.stringify(locker));
   alert(`${cosmetic.name} added to your locker!`);
+}
+
+function updateResultsCount(count) {
+    const resultsCount = document.getElementById("results-count");
+    if (resultsCount) {
+        resultsCount.textContent = `Showing ${count} item${count !== 1 ? "s" : ""}`;
+    }
+
 }
 
 loadCosmetics();
