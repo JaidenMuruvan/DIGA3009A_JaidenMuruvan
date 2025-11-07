@@ -150,3 +150,21 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-icon {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0.7) grayscale(100%);
+  transition: 0.3s ease;
+}
+
+.stat-item:hover .stat-icon {
+  filter: brightness(1) grayscale(0);
+  transform: scale(1.2);
+}
