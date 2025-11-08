@@ -39,14 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.body.insertAdjacentHTML("afterbegin", navHTML);
 
-  // === Mobile toggle ===
+  //Mobile toggle
   const menuToggle = document.getElementById("menu-toggle");
   const navMenu = document.getElementById("nav-menu");
   menuToggle.addEventListener("click", () => {
     navMenu.classList.toggle("show-menu");
   });
 
-  // === Highlight active page ===
+  //Highlights active page
   const currentPage = window.location.pathname.split("/").pop();
   document.querySelectorAll(".navigation-menu a").forEach(link => {
     if (link.getAttribute("href").endsWith(currentPage)) {
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === GSAP Animation for SVG icon ===
+  //GSAP Animation for SVG icon
   gsap.to("#rarity-icon", {
     scale: 1.1,
     repeat: -1,

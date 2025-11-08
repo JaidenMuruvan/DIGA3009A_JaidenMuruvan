@@ -32,7 +32,7 @@ let lastSearchedUser = ""; //stores the last searched username
 window.addEventListener("load", () => {
   gsap.registerPlugin(ScrollTrigger);
 
-  // === Timeline Animation ===
+  //Timeline Animation
   const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 0.6 } });
 
   tl.from(".heading-container h1", { opacity: 0, y: -40 })
@@ -41,7 +41,7 @@ window.addEventListener("load", () => {
     .from(".search-container", { opacity: 0, y: 40 }, "-=0.2")
     .from(".footer-content", { opacity: 0, y: 30, duration: 1 }, "-=0.2");
 
-  // === ScrollTrigger Animation ===
+  //ScrollTrigger Animation
   gsap.from(".leaderboard-container", {
     scrollTrigger: {
       trigger: ".leaderboard-container",
@@ -118,9 +118,9 @@ async function fetchStats(forcedUsername = null) {
 //Display stats
 function displayStats({ level, kills, wins, matches, kd, winRate, hoursPlayed, mode }) {
 
-    // Reset animation
+    //Resets animation
     statsContainer.style.animation = "none";
-    void statsContainer.offsetWidth; //forces reflow
+    void statsContainer.offsetWidth; 
     statsContainer.style.animation = "fadeIn 0.6s ease-in-out";
 
     const randomSkin = `skins/${Math.floor(Math.random() * 10) + 1}.png`;
@@ -170,7 +170,7 @@ function displayStats({ level, kills, wins, matches, kd, winRate, hoursPlayed, m
    </div>
   `;
 
-  // Animate new stats when they load
+  //Animate new stats when they load
 gsap.from(".skin-display", {
   opacity: 0,
   x: -80,
@@ -234,7 +234,7 @@ async function fetchLeaderboard() {
         matches: overall.matches ?? 0
       });
 
-      await new Promise(resolve => setTimeout(resolve, 200)); // avoid API rate limits
+      await new Promise(resolve => setTimeout(resolve, 200)); //avoids API rate limits
     } catch {
       leaderboardData.push({
         username: user.username,
@@ -245,10 +245,9 @@ async function fetchLeaderboard() {
     }
   }
 
-  // Sort descending by wins
+  //Sort descending by wins
   leaderboardData.sort((a, b) => b.wins - a.wins);
 
-  // Render all items
   listContainer.innerHTML = leaderboardData.map((player, index) => `
     <div class="leaderboard-item">
       <span class="rank">#${index + 1}</span>
@@ -259,7 +258,7 @@ async function fetchLeaderboard() {
     </div>
   `).join("");
 
-  // Animate all items sliding in
+  //Animates all items sliding in
   gsap.to(".leaderboard-item", {
     opacity: 1,
     y: 0,
