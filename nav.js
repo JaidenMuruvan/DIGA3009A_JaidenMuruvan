@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </button>
 
         <ul class="navigation-menu" id="nav-menu">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="../index.html">Home</a></li>
           <li><a href="Stats/playstats.html">Stats</a></li>
           <li><a href="ItemShop/itemShop.html">Item Shop</a></li>
           <li><a href="News/news.html">News</a></li>
