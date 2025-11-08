@@ -1,4 +1,3 @@
-// --- FETCH FORTNITE NEWS ---
 async function fetchFortniteNews() {
   const newsContainer = document.getElementById("news-container");
   try {
@@ -12,25 +11,48 @@ async function fetchFortniteNews() {
       return;
     }
 
-    newsContainer.innerHTML = brNews.slice(0, 4).map(item => `
+    //Display 6 articles depends on the news in fortnite, could be lower
+    newsContainer.innerHTML = brNews.slice(0, 6).map(item => `
       <div class="news-card">
         <img src="${item.image}" alt="${item.title}">
-        <h3>${item.title}</h3>
-        <p>${item.body}</p>
+        <div class="content">
+          <h3>${item.title}</h3>
+          <p>${item.body}</p>
+        </div>
       </div>
     `).join("");
 
-    // Animate news cards
+    //Load in animation
     gsap.from(".news-card", {
-      scrollTrigger: {
-        trigger: ".news-section",
-        start: "top 85%",
-      },
       opacity: 0,
-      y: 50,
-      stagger: 0.2,
+      y: 100, // initial offset
+      stagger: 0.01,
       duration: 0.8,
       ease: "power2.out",
+      onComplete: () => {
+      //removes GSAP transform after animation so CSS hover works
+      gsap.set(".news-card", { clearProps: "all" });
+  }
+});
+
+    //Hover floating animation
+    document.querySelectorAll(".news-card").forEach(card => {
+      card.addEventListener("mouseenter", () => {
+        gsap.to(card, { y: -6, duration: 0.15, ease: "power1.out" });
+      });
+      card.addEventListener("mouseleave", () => {
+        gsap.to(card, { y: 0, duration: 0.15, ease: "power1.out" });
+      });
+
+      //Expand/collapse on click
+      card.addEventListener("click", () => {
+        card.classList.toggle("expanded");
+        if (card.classList.contains("expanded")) {
+          gsap.to(card, { scale: 1.05, duration: 0.4, ease: "power2.out" });
+        } else {
+          gsap.to(card, { scale: 1, duration: 0.4, ease: "power2.inOut" });
+        }
+      });
     });
 
   } catch (err) {
@@ -41,8 +63,7 @@ async function fetchFortniteNews() {
 
 fetchFortniteNews();
 
-
-// --- BUG REPORT FORM VALIDATION ---
+//Bug report
 const bugForm = document.getElementById("bugForm");
 const formMessage = document.getElementById("form-message");
 
@@ -80,7 +101,7 @@ bugForm.addEventListener("submit", (e) => {
 
   if (!(nameValid && emailValid && platformValid && descriptionValid)) return;
 
-  // Save report in localStorage
+  //Save report in localStorage
   const bugReports = JSON.parse(localStorage.getItem("bugReports")) || [];
   bugReports.push({
     name: bugForm.name.value.trim(),
@@ -100,7 +121,7 @@ bugForm.addEventListener("submit", (e) => {
   bugForm.querySelectorAll("input, select, textarea").forEach(el => el.classList.remove("success"));
 });
 
-// Animate form section on scroll
+//Animate form section
 gsap.from(".bug-report-section", {
   scrollTrigger: {
     trigger: ".bug-report-section",
