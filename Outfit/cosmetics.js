@@ -9,6 +9,9 @@ let filteredCosmetics = [];
 let displayedCount = 0;
 const batchSize = 60; //number of cosmetics per scroll load
 
+
+
+   
 async function loadCosmetics() {
   try {
     const response = await fetch("https://fortnite-api.com/v2/cosmetics/br");

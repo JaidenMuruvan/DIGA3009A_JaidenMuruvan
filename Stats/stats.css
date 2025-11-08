@@ -224,6 +224,60 @@
   animation: float 4s ease-in-out infinite;
 }
 
+.leaderboard-container {
+  margin: 3rem auto;
+  background: rgba(255,255,255,0.05);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,170,255,0.2);
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+  
+}
+
+.leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  transition: 0.3s ease;
+}
+
+.leaderboard-item:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+#leaderboard-list {
+  max-height: 400px;      /* fix height */
+  overflow-y: auto;       /* vertical scroll */
+  padding-right: 10px;    /* scrollbar space */
+}
+
+.leaderboard-item {
+  opacity: 0;             /* will animate in with GSAP */
+  transform: translateY(20px);
+}
+
+.rank {
+  font-weight: 700;
+  color: #00aaff;
+  width: 30px;
+}
+
+.name {
+  flex: 1;
+  text-align: left;
+}
+
+.wins, .kd, .matches {
+  width: 80px;
+  text-align: right;
+}
+
 @media (max-width: 900px) {
   .stats-container {
     flex-direction: column; /* stack image above stats */

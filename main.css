@@ -1,7 +1,12 @@
 body{
-    font-family: 'Poppins', sans-serif;
+    font-family: "Open Sans", sans-serif;
     background-color: #1b1b25;
     color: white;
+}
+
+h1{
+  font-family: "Oswald", sans-serif;
+  
 }
 
 /* Nav bar */
@@ -148,6 +153,7 @@ nav .dropdown-menu{
     font-family: "Kanit", sans-serif;
     height: 100px;
     width: 100%;
+    margin-top: 5rem;
 }
 
 .footer-content p{
@@ -222,4 +228,8 @@ nav .dropdown-menu{
     height: 40%;
     object-fit: contain; /* ensures the image scales correctly */
     margin-top: 6px;
+}
+
+.stats-section {
+  padding-bottom: 8rem;
 }
