@@ -37,25 +37,26 @@
           <img src="../Images/xboxx.png" alt="Xbox Logo" />
         </button>
       </div>
-      <div class="mode-filter">
-        <label for="modeFilter">Game Mode:</label>
-        <select id="modeFilter">
-          <option value="overall">Overall</option>
-          <option value="solo">Solo</option>
-          <option value="duo">Duos</option>
-          <option value="trio">Trios</option>
-          <option value="squad">Squads</option>
-          <option value="ltm">LTMs</option>
-        </select>
-      </div>
-      <div class="search-container">
-        <input
-          type="text"
-          id="username"
-          placeholder="Enter Fortnite username"
-        />
 
-        <button id="searchBtn">Search Stats</button>
+      <div class="search-container">
+        <div class="search-row">
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter Fortnite username"
+          />
+          <select id="modeFilter">
+            <option value="overall">Overall</option>
+            <option value="solo">Solo</option>
+            <option value="duo">Duos</option>
+            <option value="trio">Trios</option>
+            <option value="squad">Squads</option>
+            <option value="ltm">LTMs</option>
+          </select>
+        </div>
+        <div class="search-button-row">
+          <button id="searchBtn">Search</button>
+        </div>
       </div>
 
       <div id="stats-container" class="stats-container">

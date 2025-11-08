@@ -9,6 +9,20 @@ h1{
   
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
+  color: #00aaff;
+  text-decoration: none;
+}
+
+.logo svg {
+  filter: drop-shadow(0 0 8px #00aaff);
+}
+
 /* Nav bar */
 .main-nav {
   background: #111;

@@ -30,63 +30,32 @@ let lastSearchedUser = ""; //stores the last searched username
 
 //GSAP Page Intro Animations
 window.addEventListener("load", () => {
+  gsap.registerPlugin(ScrollTrigger);
 
-//Heading and season info fade in on scroll
-gsap.from([".heading-container h1", ".season-info"], {
-  scrollTrigger: {
-    trigger: ".heading-container",
-    start: "top 80%",
-  },
-  opacity: 0,
-  y: 40,
-  duration: 1,
-  ease: "power2.out",
-});
+  // === Timeline Animation ===
+  const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 0.6 } });
 
-  gsap.from(".platform-buttons button", {
+  tl.from(".heading-container h1", { opacity: 0, y: -40 })
+    .from(".season-info", { opacity: 0, y: 20 }, "-=0.4")
+    .from(".platform-buttons button", { opacity: 0, y: 30, stagger: 0.15 }, "-=0.3")
+    .from(".search-container", { opacity: 0, y: 40 }, "-=0.2")
+    .from(".footer-content", { opacity: 0, y: 30, duration: 1 }, "-=0.2");
+
+  // === ScrollTrigger Animation ===
+  gsap.from(".leaderboard-container", {
+    scrollTrigger: {
+      trigger: ".leaderboard-container",
+      start: "top 85%",
+    },
     opacity: 0,
-    y: 20,
-    stagger: 0.15,
-    duration: 0.6,
-    delay: 0.3,
-    ease: "power2.out"
-  });
-
-  gsap.from([".mode-filter", ".search-container"], {
-    opacity: 0,
-    y: 30,
-    duration: 0.8,
-    delay: 0.8,
-    stagger: 0.2,
-    ease: "power2.out"
-  });
-
-  gsap.from(".footer-content", {
-    opacity: 0,
-    y: 20,
+    y: 60,
     duration: 1,
-    delay: 1.5,
-    ease: "power2.out"
+    ease: "power2.out",
   });
 });
 
 //GSAP Scroll Animations
 gsap.registerPlugin(ScrollTrigger);
-
-
-
-//Footer fade up
-gsap.from(".footer-content", {
-  scrollTrigger: {
-    trigger: ".footer-content",
-    start: "top 90%",
-  },
-  opacity: 0,
-  y: 40,
-  duration: 1.2,
-  ease: "power2.out",
-});
-
 
 platformButtons.forEach(btn => {
   btn.addEventListener("click", () => {
