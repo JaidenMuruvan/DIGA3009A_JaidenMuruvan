@@ -80,6 +80,10 @@
   transform: scale(1.05);
 }
 
+#current-season {
+  text-align: center;
+}
+
 #modeFilter {
   display: block;
   margin: 0 auto;
@@ -374,7 +378,7 @@
 }
 
 .leaderboard-item {
-  opacity: 0;             /* will animate in with GSAP */
+  opacity: 0;         
   transform: translateY(20px);
 }
 
@@ -415,6 +419,26 @@
 
   .stat-item {
     justify-content: center; /* center icons and text */
+  }
+
+  #leaderboard-list {
+    font-size: small;
+  }
+
+  .leaderboard-container {
+    margin: auto;
+  }
+
+  #stats-container {
+    width: 70%;
+  }
+ 
+  .search-row {
+    width: 60%;
+  }
+  
+  .stats-container {
+    width: 60%;
   }
 }
 
