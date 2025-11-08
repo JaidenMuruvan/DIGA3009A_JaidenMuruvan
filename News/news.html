@@ -11,12 +11,56 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../main.css" />
+    <link rel="stylesheet" href="news.css" />
   </head>
   <header></header>
   <body>
-    <main class="heading-container">
-      <h1>What's new?</h1>
+    <main class="news-section">
+      <div class="heading-container">
+        <h1>Latest Fortnite News</h1>
+      </div>
+      <div id="news-container" class="news-container">
+        <p>Loading latest news...</p>
+      </div>
+
+      <div class="bug-report-section">
+        <h2>Report a Bug</h2>
+        <form id="bugForm">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Name" required />
+            <span class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Your Email" required />
+            <span class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <select id="platform" required>
+              <option value="">Select Platform</option>
+              <option value="Epic">Epic Games</option>
+              <option value="PlayStation">PlayStation</option>
+              <option value="Xbox">Xbox</option>
+            </select>
+            <span class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <textarea
+              id="description"
+              placeholder="Describe the bug..."
+              required
+            ></textarea>
+            <span class="error-message"></span>
+          </div>
+
+          <button type="submit">Submit Bug Report</button>
+          <p id="form-message"></p>
+        </form>
+      </div>
     </main>
+    <script src="news.js"></script>
     <footer class="footer-content">
       <p>Fortnite Companion | All Rights Reserved</p>
       <p>
