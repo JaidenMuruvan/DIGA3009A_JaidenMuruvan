@@ -37,7 +37,7 @@
 //     </nav>
 //   `;
 
-  document.body.insertAdjacentHTML("afterbegin", navHTML);
+  //document.body.insertAdjacentHTML("afterbegin", navHTML);
 
   // Mobile toggle
   const menuToggle = document.getElementById("menu-toggle");
