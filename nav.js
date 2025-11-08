@@ -20,16 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
         </button>
 
         <ul class="navigation-menu" id="nav-menu">
-          <li><a href="/DIGA3009A_JaidenMuruvan/index.html">Home</a></li>
-          <li><a href="../Stats/stats.html">Stats</a></li>
-          <li><a href="../ItemShop/itemShop.html">Item Shop</a></li>
-          <li><a href="../News/news.html">News</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Stats/stats.html">Stats</a></li>
+          <li><a href="ItemShop/itemShop.html">Item Shop</a></li>
+          <li><a href="News/news.html">News</a></li>
           <li class="dropdown">
             <a href="#">Cosmetics ▼</a>
             <ul class="dropdown-menu">
-              <li><a href="../Outfit/cosmetics.html">All Cosmetics</a></li>
-              <li><a href="../Outfit/locker.html">Your Locker</a></li>
-              <li><a href="../Outfit/outfit.html">Outfit Randomizer</a></li>
+              <li><a href="Outfit/cosmetics.html">All Cosmetics</a></li>
+              <li><a href="Outfit/locker.html">Your Locker</a></li>
+              <li><a href="Outfit/outfit.html">Outfit Randomizer</a></li>
             </ul>
           </li>
         </ul>
