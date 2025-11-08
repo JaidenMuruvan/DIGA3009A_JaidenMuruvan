@@ -158,6 +158,14 @@ nav .dropdown-menu{
   .dropdown > a {
     display: block;
   }
+
+  #shop-items {
+    width: 80%;
+    margin: auto;
+    
+  }
+
+  
 }
 
 /* homepage */

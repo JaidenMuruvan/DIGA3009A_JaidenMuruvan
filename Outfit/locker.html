@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="../main.css" />
     <link rel="stylesheet" href="outfit.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   </head>
   <header>
     <nav class="main-nav">
@@ -70,38 +71,7 @@
       <div class="heading-container">
         <h1>Your Locker</h1>
       </div>
-      <div class="results-info">
-        <span id="results-count">Showing 0 items</span>
-      </div>
-      <div class="filter-bar">
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Search for a cosmetic..."
-        />
 
-        <select id="typeFilter">
-          <option value="all">All Types</option>
-          <option value="Outfit">Outfits</option>
-          <option value="Pickaxe">Pickaxes</option>
-          <option value="Glider">Gliders</option>
-          <option value="Back Bling">Back Blings</option>
-          <option value="Emote">Emotes</option>
-          <option value="Wrap">Wraps</option>
-          <option value="Shoes">Shoes</option>
-        </select>
-
-        <select id="seasonFilter">
-          <option value="all">All Seasons</option>
-        </select>
-
-        <select id="sortFilter">
-          <option value="newest">Newest First</option>
-          <option value="oldest">Oldest First</option>
-          <option value="az">A-Z</option>
-          <option value="za">Z-A</option>
-        </select>
-      </div>
       <div id="locker-items" class="locker-container"></div>
     </main>
     <footer class="footer-content">

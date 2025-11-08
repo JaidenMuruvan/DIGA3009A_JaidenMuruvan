@@ -3,6 +3,14 @@ const searchInput = document.getElementById("searchInput");
 const timer = document.getElementById("timer");
 const dateDisplay = document.getElementById("date");
 
+const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 0.6 } });
+
+  tl.from(".heading-container h1", { opacity: 0, y: -40 })
+    .from(".shop-items", { opacity: 0, y: 20 }, "-=0.4")
+    //.from(".filter-bar", { opacity: 0, y: 30, stagger: 0.15 }, "-=0.3")
+    //.from(".cosmetic-container", { opacity: 0, y: 40, duration: 1 }, "-=0.1")
+    .from(".footer-content", { opacity: 0, y: 30, duration: 1 }, "-=0.2");
+
 // Display current date
 dateDisplay.textContent = `Date: ${new Date().toLocaleDateString()}`;
 

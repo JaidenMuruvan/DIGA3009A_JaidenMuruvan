@@ -116,3 +116,20 @@
     color: #3e3e3e;
     font-size: 1rem;
 }
+
+
+@media (max-width: 768px) {
+  .cosmetic-section {
+    width: 80%;
+    margin: auto;
+  }
+  
+  .locker-section {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+#randomize-btn {
+  margin: ;
+}

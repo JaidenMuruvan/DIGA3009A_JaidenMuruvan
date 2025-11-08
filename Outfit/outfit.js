@@ -1,6 +1,11 @@
 const randomizeBtn = document.getElementById("randomize-btn");
 const randomOutfitContainer = document.getElementById("random-outfit-container");
 
+const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 0.8 } });
+
+  tl.from(".heading-container h1", { opacity: 0, y: -40 })
+    .from(".footer-content", { opacity: 0, y: 30, duration: 1 }, "-=0.2");
+
 function randomizeOutfit() {
     const locker = JSON.parse(localStorage.getItem("locker")) || [];
     if (locker.length === 0) {
