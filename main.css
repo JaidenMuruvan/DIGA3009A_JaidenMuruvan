@@ -105,6 +105,9 @@ nav .dropdown-menu{
   cursor: pointer;
 }
 
+.background-image {
+  width: 100%;
+}
 
 @media (max-width: 768px) {
   .menu-toggle {
