@@ -214,6 +214,10 @@ nav .dropdown-menu{
   justify-content: center;
 }
 
+.cards-container a {
+  text-decoration: none;
+}
+
 .card {
   background: rgba(0, 170, 255, 0.2);
   backdrop-filter: blur(6px);
@@ -226,6 +230,11 @@ nav .dropdown-menu{
   text-align: center;
   font-family: 'Oswald', sans-serif;
   font-size: 1rem;
+  color: white;
+}
+
+.card a {
+  text-decoration: none;
 }
 
 .card:hover {
