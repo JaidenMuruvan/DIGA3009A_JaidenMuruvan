@@ -40,8 +40,10 @@
   //document.body.insertAdjacentHTML("afterbegin", navHTML);
 
   // Mobile toggle
+  document.addEventListener("DOMContentLoaded", () => {
+  // Mobile toggle
   const menuToggle = document.getElementById("menu-toggle");
-  const navMenu = document.getElementById("nav-menu");
+  const navMenu = document.querySelector(".navigation-menu");
   menuToggle.addEventListener("click", () => {
     navMenu.classList.toggle("show-menu");
   });
@@ -76,28 +78,4 @@
     ease: "sine.inOut"
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
-  // Mobile toggle
-  const menuToggle = document.getElementById("menu-toggle");
-  const navMenu = document.querySelector(".navigation-menu");
-  menuToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("show-menu");
-  });
-
-  // GSAP Animation for SVG icon
-  gsap.to("#rarity-icon", {
-    scale: 1.1,
-    repeat: -1,
-    yoyo: true,
-    duration: 1.5,
-    ease: "power1.inOut"
-  });
-
-  gsap.to("#rarity-icon circle", {
-    stroke: "#00ffff",
-    repeat: -1,
-    yoyo: true,
-    duration: 1.5,
-    ease: "sine.inOut"
-  });
 });
